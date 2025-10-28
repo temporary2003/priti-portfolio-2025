@@ -1,39 +1,47 @@
-# Dependencies
+# Dependencies & package managers
 node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .pnpm-debug.log*
-package-lock.json
+# Keep npm lockfile tracked (best practice); ignore other lockfiles if accidentally added
+yarn.lock
+pnpm-lock.yaml
 
 # Build outputs
 /build
+/dist
 /.cache
 /public/build
 .vercel
 .netlify
 .wrangler
 
-# Environment variables
+# Environment variables (never commit secrets)
 .env
 .env.local
 .env.production
 .env.development
+.env.test
 .dev.vars
+# allow examples
+!.env.example
 
-# IDE
+# IDE/editor
 .vscode
 .idea
 *.swp
 *.swo
 *~
+.eslintcache
 
 # Misc
 public/draco
 storybook-static
 .turbo
 *.log
+logs
 
 # OS
 Thumbs.db

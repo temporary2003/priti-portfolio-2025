@@ -16,6 +16,10 @@ export default defineConfig({
   server: {
     port: 7777,
   },
+  ssr: {
+    external: ['react-dom/server'],
+    noExternal: ['react', 'react-dom']
+  },
   plugins: [
     mdx({
       rehypePlugins: [[rehypeImgSize, { dir: 'public' }], rehypeSlug, rehypePrism],

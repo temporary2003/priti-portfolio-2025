@@ -1,6 +1,5 @@
 import {
   vitePlugin as remix,
-  cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
 } from '@remix-run/dev';
 import { defineConfig } from 'vite';
 import jsconfigPaths from 'vite-jsconfig-paths';
@@ -19,19 +18,12 @@ export default defineConfig({
   server: {
     port: 7777,
   },
-  ssr: {
-    noExternal: ['react-dom/server'],
-  },
-  optimizeDeps: {
-    include: ['react-dom/server'],
-  },
   plugins: [
     mdx({
       rehypePlugins: [[rehypeImgSize, { dir: 'public' }], rehypeSlug, rehypePrism],
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       providerImportSource: '@mdx-js/react',
     }),
-    remixCloudflareDevProxy(),
     remix({
       routes(defineRoutes) {
         return defineRoutes(route => {

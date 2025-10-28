@@ -23,6 +23,10 @@ export default defineConfig({
       providerImportSource: '@mdx-js/react',
     }),
     remix({
+      // Force a Node.js server bundle (not Edge/Cloudflare)
+      serverPlatform: 'node',
+      // Use ESM for the server build (supported by Vercel Node 18/20)
+      serverModuleFormat: 'esm',
       routes(defineRoutes) {
         return defineRoutes(route => {
           route('/', 'routes/home/route.js', { index: true });

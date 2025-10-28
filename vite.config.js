@@ -1,4 +1,7 @@
-import { vitePlugin as remix } from '@remix-run/dev';
+import {
+  vitePlugin as remix,
+  cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
+} from '@remix-run/dev';
 import { defineConfig } from 'vite';
 import jsconfigPaths from 'vite-jsconfig-paths';
 import mdx from '@mdx-js/rollup';
@@ -16,21 +19,14 @@ export default defineConfig({
   server: {
     port: 7777,
   },
-  ssr: {
-    external: ['react-dom/server'],
-    noExternal: ['react', 'react-dom']
-  },
   plugins: [
     mdx({
       rehypePlugins: [[rehypeImgSize, { dir: 'public' }], rehypeSlug, rehypePrism],
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       providerImportSource: '@mdx-js/react',
     }),
+    remixCloudflareDevProxy(),
     remix({
-      // Force a Node.js server bundle (not Edge/Cloudflare)
-      serverPlatform: 'node',
-      // Use ESM for the server build (supported by Vercel Node 18/20)
-      serverModuleFormat: 'esm',
       routes(defineRoutes) {
         return defineRoutes(route => {
           route('/', 'routes/home/route.js', { index: true });

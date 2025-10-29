@@ -22,22 +22,22 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: 'Github',
-    url: `https://github.com/${config.github}`,
+    url: `https://github.com/priti275/`,
     icon: 'github',
   },
   {
     label: 'LinkedIn',
-    url: config.linkedin,
+    url: 'https://www.linkedin.com/in/pritikana-mondal-2a6865257/',
     icon: 'linkedin',
   },
   {
     label: 'Telegram',
-    url: config.telegram,
+    url: 'https://t.me/Priti_3425',
     icon: 'telegram',
   },
   {
     label: 'Gmail',
-    url: config.gmail,
+    url: 'mailto:pritikana.mondal@gmail.com',
     icon: 'send',
   },
 ];
